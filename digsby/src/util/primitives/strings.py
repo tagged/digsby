@@ -223,7 +223,7 @@ def get_between(s, start_str, end_str):
     '''
 
     start_i = s.find(start_str)
-    end_i = s.find(end_str, start_i)
+    end_i = s.find(end_str, start_i + len(start_str))
 
     if start_i > end_i or (-1 in (start_i, end_i)):
         return None

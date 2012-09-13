@@ -38,6 +38,8 @@ def Flags(*args):
 #  16.0.1635.0608        # Detected on 2011-Jun-17. Lots of changes
 #  16.2.2978.1206        # Detected on 2011-Dec-16. There don't seem to be any changes to the API, but the content of the page has changed.
 #  16.2.4514.0219        # Detected on 2012-Mar-21.
+#  16.2.6151.0801        # Detected on 2012-Sep-13. No changes to API
+
 
 XMLPost = 0
 null = None
@@ -1547,8 +1549,9 @@ class HM_Type(FppProxy):
     ReadingPaneLocation = Flags("None", 0, "Off", 1, "Right", 2, "Bottom", 3);
 
     __11 = Flags("Passed", 0, "Failed", 1, "Unknown", 2, "SoftFail", 3)
-    __15 = Flags("Ok", 0, "OverQuota", 1, "DoesntExist", 2, "Error", 3, "AccountDoesntExist", 4, "AccountError", 5);
-    __20 = Flags("Unknown", 0, "MakeLiveContact", 1, "AddLiveContact", 2, "DontShow", 3);
+    __15 = Flags("Ok", 0, "OverQuota", 1, "DoesntExist", 2, "Error", 3, "AccountDoesntExist", 4, "AccountError", 5)
+    __20 = Flags("Unknown", 0, "MakeLiveContact", 1, "AddLiveContact", 2, "DontShow", 3)
+    MailActionType = Flags("Move", 0, "Mark", 1, "Flag", 2, "Forward", 3, "AssignCategory", 4, "RemoveCategory", 5)
 
     @property
     def FppReturnPackage(self):
@@ -2063,6 +2066,17 @@ class HM_Type(FppProxy):
          null,
          'Microsoft.Msn.Hotmail.Ui.Fpp.MailBox'),
     })
+
+    ThrowError = FppMethod({
+        '16.2.6151.0801' : (
+         [('code', '_string'),
+          ('message', '_string')],
+         'ThrowError',
+         XMLPost,
+         null,
+         'Microsoft.Msn.Hotmail.Ui.Fpp.MailBox'),
+    })
+
     GetHMLiveViews = FppMethod({
         '15.3.2495.0616' : (
          [('requests', '_array')],
@@ -2619,7 +2633,7 @@ class Category(FppClass):
         ("IsReserved", '_primitive'),
     ]
 # Added to suppress "new build" warnings.
-@ForBuild('16.2.4514.0219')
+@ForBuild('16.2.6151.0801')
 class __BuildVersionDummy(FppClass):
     _fields_ = []
 

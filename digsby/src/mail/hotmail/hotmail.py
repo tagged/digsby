@@ -264,7 +264,7 @@ class Hotmail(common.emailaccount.EmailAccount, WebScraper):
         else:
             data =  HTML.tostring(doc)
             log.error("Document: %r", data)
-            ppft_html = eval(util.get_between(data, "var srf_sFT=", ";") or 'None')
+            ppft_html = eval(util.get_between(data, "sFTTag:", ",") or 'None')
             ppft_token = HTML.fromstring(ppft_html).attrib['value']
             bk = str(int(time.time()))
             action_url = net.UrlQuery('https://login.live.com/ppsecure/post.srf',
@@ -917,7 +917,7 @@ def _remove_js_functions(s):
     return re.sub('function\s*\(.*?\)\s*\{.*?\}', 'null', s)
 
 def _is_login_domain_exception(username):
-    return '@msn.com' in username or '@compaq.net' in username
+    return False
 
 def main(un, password):
     Hotmail._decryptedpw = lambda h: h.password
