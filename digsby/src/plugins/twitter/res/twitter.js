@@ -10,7 +10,7 @@ var INVITE_URL  = "http://bit.ly/clMDW5";
 
 // javascript's RegExp \w character class doesn't include common extended characters. this string
 // includes some common latin characters, at least.
-var wordchars = '\\wÀÈÌÒÙàèìòùÁÉÍÓÚİáéíóúıÂÊÎÔÛâêîôûÃÑÕãñõÄËÏÖÜäëïöü¡¿çÇßØøÅåÆæŞşĞğ';
+var wordchars = '\\wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 /* linkify @usernames */
 var atify_regex = new RegExp('(?:(?:^@([\\w]+))|(?:([^\\w])@([' + wordchars + ']+)))(/[' + wordchars + ']+)?', 'g');
@@ -209,7 +209,7 @@ function errorFunc(msg) {
 TwitterAccount.prototype = {
     timerMs: 1000 * 60,
     webRoot: 'http://twitter.com/',
-    apiRoot: 'https://api.twitter.com/1/',
+    apiRoot: 'https://api.twitter.com/1.1/',
     searchApiRoot: 'http://search.twitter.com/',
 
     showTimelinePopup: function(n) {
